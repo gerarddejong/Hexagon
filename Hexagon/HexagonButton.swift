@@ -12,30 +12,33 @@ import UIKit
 
 class HexagonButton: UIButton {
     
+    @IBInspectable var borderWidth: CGFloat = 2.0
+    @IBInspectable var borderInset: CGFloat = 1.0
     @IBInspectable var borderColor: UIColor = UIColor.black
     @IBInspectable var fillColor: UIColor = UIColor.gray
-    @IBInspectable var hexagonInset: CGFloat = 10
+    @IBInspectable var fillInset: CGFloat = 8
     
     override func draw(_ rect: CGRect) {
-        //let insettedRect = CGRect(x: rect.origin.x + hexagonInset, y: rect.origin.y + hexagonInset, width: rect.size.width - hexagonInset, height: rect.size.height - hexagonInset);
-        
         self.addBackgroundLayer(rect)
-        //self.addBorderLayer(rect)
+        self.addBorderLayer(rect)
     }
     
     func addBorderLayer(_ rect: CGRect) {
-        let hexagonLayer = self.hexagonLayer(rect)
-        
-        hexagonLayer.borderColor = borderColor.cgColor
+        let insetRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width - borderInset, height: rect.size.height - borderInset)
+        let hexagonLayer = self.hexagonLayer(insetRect)
+        hexagonLayer.strokeColor = borderColor.cgColor
+        hexagonLayer.lineWidth = borderWidth
         hexagonLayer.fillColor = UIColor.clear.cgColor
-        hexagonLayer.borderWidth = 2
+        hexagonLayer.position = CGPoint(x: borderInset/2, y: borderInset/2)
         
         self.layer.insertSublayer(hexagonLayer, below: self.layer.sublayers?.first)
     }
     
     func addBackgroundLayer(_ rect: CGRect) {
-        let hexagonLayer = self.hexagonLayer(rect)
+        let insetRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width - fillInset, height: rect.size.height - fillInset)
+        let hexagonLayer = self.hexagonLayer(insetRect)
         hexagonLayer.fillColor = fillColor.cgColor
+        hexagonLayer.position = CGPoint(x: fillInset/2, y: fillInset/2)
         self.layer.insertSublayer(hexagonLayer, below: self.layer.sublayers?.first)
     }
     
