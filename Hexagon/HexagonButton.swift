@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 @IBDesignable
 
 class HexagonButton: UIButton {
+
+//MARK: Drawing
     
     @IBInspectable var borderWidth: CGFloat = 2.0
     @IBInspectable var borderInset: CGFloat = 1.0
@@ -62,5 +65,31 @@ class HexagonButton: UIButton {
         
         return path
     }
-
+    
+// MARK: Touch event handling
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        print(touches)
+        
+        
+        super.touchesBegan(touches, with: event)
+    }
+    
+    
+    var player: AVAudioPlayer?
+    
+    func playSound() {
+        let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3")!
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            guard let player = player else { return }
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 }
