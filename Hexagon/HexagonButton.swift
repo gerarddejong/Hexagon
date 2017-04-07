@@ -69,27 +69,23 @@ class HexagonButton: UIButton {
 // MARK: Touch event handling
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        print(touches)
-        
-        
         super.touchesBegan(touches, with: event)
+        playSoundEffect(asset: "button-press-effect")
     }
-    
     
     var player: AVAudioPlayer?
     
-    func playSound() {
-        let url = Bundle.main.url(forResource: "soundName", withExtension: "mp3")!
-        
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            guard let player = player else { return }
+    func playSoundEffect(asset: String) {
+        if let asset = NSDataAsset(name:asset) {
             
-            player.prepareToPlay()
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
+            do {
+                // Use NSDataAsset's data property to access the audio file stored in Sound.
+                player = try AVAudioPlayer(data:asset.data, fileTypeHint:"mp3")
+                // Play the above sound file.
+                player?.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
     }
 }
