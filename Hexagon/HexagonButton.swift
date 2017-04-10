@@ -18,6 +18,7 @@ class HexagonButton: UIButton {
     @IBInspectable var borderWidth: CGFloat = 2.0
     @IBInspectable var borderInset: CGFloat = 1.0
     @IBInspectable var borderColor: UIColor = UIColor.black
+    @IBInspectable var borderSections: Int = 6
     @IBInspectable var fillColor: UIColor = UIColor.gray
     @IBInspectable var fillInset: CGFloat = 8
     
@@ -47,23 +48,41 @@ class HexagonButton: UIButton {
     
     func hexagonLayer(_ rect: CGRect) -> CAShapeLayer {
         let hexagonLayer = CAShapeLayer()
-        hexagonLayer.path = self.hexagonPath(rect)
+        hexagonLayer.path = self.hexagonPath(rect, sectionsToDraw: 6)
         return hexagonLayer
     }
     
-    func hexagonPath(_ rect: CGRect) -> CGPath {
-        let path = CGMutablePath()
+    func hexagonPath(_ rect: CGRect, sectionsToDraw: Int) -> CGPath {
+        let path = UIBezierPath()
+        let hexagonPoints = self.hexagonPoints(rect)
+        
+        path.move(to: hexagonPoints[0])
+        
+        if sectionsToDraw <= hexagonPoints.count {
+            
+        }
+        
+        
+        for i in 1...hexagonPoints.count - 1 {
+            path.addLine(to: hexagonPoints[i])
+        }
+        path.close()
+        
+        return path.cgPath
+    }
+    
+    func hexagonPoints(_ rect: CGRect) -> [CGPoint] {
+        var points : [CGPoint] = []
         let inset = rect.width / 4
         
-        path.move(to: CGPoint(x: rect.origin.x, y: rect.height/2))
-        path.addLine(to: CGPoint(x: inset, y: 0))
-        path.addLine(to: CGPoint(x: rect.width - inset, y: 0))
-        path.addLine(to: CGPoint(x: rect.width, y: rect.height/2))
-        path.addLine(to: CGPoint(x: rect.width - inset, y: rect.height))
-        path.addLine(to: CGPoint(x: inset, y: rect.height))
-        path.closeSubpath()
+        points.append(CGPoint(x: rect.origin.x, y: rect.height/2))
+        points.append(CGPoint(x: inset, y: 0))
+        points.append(CGPoint(x: rect.width - inset, y: 0))
+        points.append(CGPoint(x: rect.width, y: rect.height/2))
+        points.append(CGPoint(x: rect.width - inset, y: rect.height))
+        points.append(CGPoint(x: inset, y: rect.height))
         
-        return path
+        return points
     }
     
 // MARK: Touch event handling

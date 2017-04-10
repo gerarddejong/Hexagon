@@ -12,7 +12,7 @@
 		CA4A10821E94DE10002F9629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4A10801E94DE10002F9629 /* Main.storyboard */; };
 		CA4A10841E94DE10002F9629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4A10831E94DE10002F9629 /* Assets.xcassets */; };
 		CA4A10871E94DE10002F9629 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4A10851E94DE10002F9629 /* LaunchScreen.storyboard */; };
-		CA4A108F1E94DE6A002F9629 /* HexagonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A108E1E94DE6A002F9629 /* HexagonButton.swift */; };
+		CA5D6FA91E9BC3080018B387 /* HexagonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5D6FA81E9BC3080018B387 /* HexagonButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		CA4A10831E94DE10002F9629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA4A10861E94DE10002F9629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA4A10881E94DE10002F9629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA4A108E1E94DE6A002F9629 /* HexagonButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonButton.swift; sourceTree = "<group>"; };
+		CA5D6FA81E9BC3080018B387 /* HexagonButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +58,11 @@
 			children = (
 				CA4A10781E94DE10002F9629 /* AppDelegate.swift */,
 				CA4A107A1E94DE10002F9629 /* RootViewController.swift */,
+				CA5D6FA81E9BC3080018B387 /* HexagonButton.swift */,
 				CA4A10801E94DE10002F9629 /* Main.storyboard */,
 				CA4A10831E94DE10002F9629 /* Assets.xcassets */,
 				CA4A10851E94DE10002F9629 /* LaunchScreen.storyboard */,
 				CA4A10881E94DE10002F9629 /* Info.plist */,
-				CA4A108E1E94DE6A002F9629 /* HexagonButton.swift */,
 			);
 			path = Hexagon;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA4A107B1E94DE10002F9629 /* RootViewController.swift in Sources */,
+				CA5D6FA91E9BC3080018B387 /* HexagonButton.swift in Sources */,
 				CA4A10791E94DE10002F9629 /* AppDelegate.swift in Sources */,
-				CA4A108F1E94DE6A002F9629 /* HexagonButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
